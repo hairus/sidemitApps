@@ -57,6 +57,10 @@ class LoginView extends StatefulWidget {
                     controller.doLogin();
                   },
                 ),
+                Text(
+                  "VERSI BETA 1.0",
+                  style: TextStyle(fontSize: 18),
+                ),
                 Text("1901"),
               ],
             ),

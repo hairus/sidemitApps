@@ -40,6 +40,11 @@ class PointdayView extends StatefulWidget {
                 );
               }
               if (snapshot.hasData) {
+                if (snapshot.data.length == 0) {
+                  return Center(
+                    child: Text("TIDAK ADA POINT HARI INI"),
+                  );
+                }
                 return ListView.builder(
                   itemCount: snapshot.data.length,
                   physics: const ScrollPhysics(),
