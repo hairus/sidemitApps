@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:hyper_ui/core.dart';
 import 'package:hyper_ui/model/kelas_siswa.dart';
 import 'package:hyper_ui/model/sub_tatibs.dart';
-import 'package:hyper_ui/service/auth_services/auth_services.dart';
-import '../view/tatib_view.dart';
 import 'package:http/http.dart' as http;
 
 class TatibController extends State<TatibView> {
@@ -48,5 +46,27 @@ class TatibController extends State<TatibView> {
     List obj = json.decode(response.body);
 
     return obj.map((e) => SubTatibs.fromJson(e)).toList();
+  }
+
+  Future simpTatib(String tatibId, String nis, [String? tanggal]) async {
+    var response = await http.post(
+      Uri.parse("https://sidemit.sumenepsmansa.sch.id/api/kumer/simpanTatib"),
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer ${AuthServices.token}"
+      },
+      body: jsonEncode({
+        "nis": nis,
+        "tatib_id": tatibId,
+        "tanggal": tanggal,
+      }),
+    );
+    if (response.statusCode == 500) {
+      snackbarDanger(message: "terjadi kesalahan");
+    }
+    if (response.statusCode == 201) {
+      snackbarIconSuccess(message: "Penginputan sukses");
+      Get.offAll(PointdayView());
+    }
   }
 }

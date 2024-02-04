@@ -20,10 +20,14 @@ export 'package:hyper_ui/module/main_navigation/controller/main_navigation_contr
 export 'package:hyper_ui/module/main_navigation/view/main_navigation_view.dart';
 export 'package:hyper_ui/module/order/controller/order_controller.dart';
 export 'package:hyper_ui/module/order/view/order_view.dart';
+export 'package:hyper_ui/module/pointday/controller/pointday_controller.dart';
+export 'package:hyper_ui/module/pointday/view/pointday_view.dart';
 export 'package:hyper_ui/module/profile/controller/profile_controller.dart';
 export 'package:hyper_ui/module/profile/view/profile_view.dart';
 export 'package:hyper_ui/module/tatib/controller/tatib_controller.dart';
 export 'package:hyper_ui/module/tatib/view/tatib_view.dart';
+export 'package:hyper_ui/service/auth_services/auth_services.dart';
+export 'package:hyper_ui/service/kelas_siswa/kelas_siswa.dart';
 export 'package:hyper_ui/setup.dart';
 export 'package:hyper_ui/shared/theme/theme.dart';
 export 'package:hyper_ui/shared/theme/theme_config.dart';
