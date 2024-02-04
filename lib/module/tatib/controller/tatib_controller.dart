@@ -33,7 +33,6 @@ class TatibController extends State<TatibView> {
       },
     );
     List obj = json.decode(response.body);
-    print(obj);
 
     return obj.map((e) => KelasSiswa.fromJson(e)).toList();
   }
@@ -47,7 +46,6 @@ class TatibController extends State<TatibView> {
       },
     );
     List obj = json.decode(response.body);
-    print(obj);
 
     return obj.map((e) => SubTatibs.fromJson(e)).toList();
   }

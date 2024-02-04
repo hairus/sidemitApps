@@ -1,4 +1,4 @@
-import 'package:hyper_ui/core.dart';
+import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class AuthServices {
@@ -8,21 +8,18 @@ class AuthServices {
     required String password,
   }) async {
     try {
-      var response = await Dio().post(
-        "https://sidemit.sumenepsmansa.sch.id/api/login",
-        options: Options(
-          headers: {
-            "Content-Type": "application/json",
-          },
-        ),
-        data: {
+      var response = await http.post(
+        Uri.parse("https://sidemit.sumenepsmansa.sch.id/api/login"),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: jsonEncode({
           "email": email,
           "password": password,
-        },
+        }),
       );
-      var obj = response.data['token'];
-      token = obj;
-      print(obj);
+      Map obj = jsonDecode(response.body);
+      token = obj['token'];
       return true;
     } on Exception catch (_) {
       return false;
@@ -37,5 +34,6 @@ class AuthServices {
         "Authorization": "Bearer ${AuthServices.token}"
       },
     );
+    AuthServices.token = "";
   }
 }
